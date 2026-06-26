@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bqo03e8y5wb64"]
+
+[ext_resource type="PackedScene" uid="uid://pmfij6y20ctq" path="res://Scenes/player.tscn" id="1_tumq0"]
+[ext_resource type="Texture2D" uid="uid://c51ki4adtpgda" path="res://Assets/Backgrounds/darkPurple.png" id="2_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://gv64fgc7ocya" path="res://Scenes/meteor.tscn" id="3_6phgx"]
+
+[node name="Level" type="Node2D" unique_id=506793387]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=900116819]
+z_index = -1
+position = Vector2(643.00006, 321)
+scale = Vector2(5.5, 5)
+texture = ExtResource("2_k5f4k")
+
+[node name="Player" parent="." unique_id=431888613 instance=ExtResource("1_tumq0")]
+position = Vector2(918, 456)
+
+[node name="meteor" parent="." unique_id=314933772 instance=ExtResource("3_6phgx")]
+position = Vector2(389, 77)
