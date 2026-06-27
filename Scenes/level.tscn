@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://bqo03e8y5wb64"]
 
+[ext_resource type="Script" uid="uid://bvcfy1yrvdpls" path="res://Scenes/level.gd" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://pmfij6y20ctq" path="res://Scenes/player.tscn" id="1_tumq0"]
 [ext_resource type="Texture2D" uid="uid://c51ki4adtpgda" path="res://Assets/Backgrounds/darkPurple.png" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://gv64fgc7ocya" path="res://Scenes/meteor.tscn" id="3_6phgx"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+size = Vector2(1301, 33)
+
 [node name="Level" type="Node2D" unique_id=506793387]
+script = ExtResource("1_81xng")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=900116819]
 z_index = -1
@@ -17,3 +22,43 @@ position = Vector2(918, 456)
 
 [node name="meteor" parent="." unique_id=314933772 instance=ExtResource("3_6phgx")]
 position = Vector2(389, 77)
+
+[node name="Boundaries" type="Node2D" parent="." unique_id=1388973755]
+
+[node name="TopWall" type="StaticBody2D" parent="Boundaries" unique_id=206084197]
+position = Vector2(642, -17)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopWall" unique_id=1136096301]
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="BottomWall" type="StaticBody2D" parent="Boundaries" unique_id=235858923]
+position = Vector2(629, 740)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomWall" unique_id=1900188729]
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="Leftwall" type="StaticBody2D" parent="Boundaries" unique_id=1561674564]
+position = Vector2(-19, 423)
+rotation = 1.5707964
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Leftwall" unique_id=620273363]
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="RightWall" type="StaticBody2D" parent="Boundaries" unique_id=276361880]
+position = Vector2(1296, 417)
+rotation = 1.5707964
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightWall" unique_id=376616460]
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="MeteorTimer" type="Timer" parent="." unique_id=509318250]
+wait_time = 0.25
+autostart = true
+
+[node name="Meteors" type="Node2D" parent="." unique_id=719834764]
+
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]
