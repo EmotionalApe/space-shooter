@@ -3,6 +3,9 @@ extends Area2D
 var speed : int
 var direction_x : float
 var rotation_speed : int
+var can_collide := true
+
+signal collision
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
@@ -22,4 +25,13 @@ func _process(delta):
 	rotation_degrees += rotation_speed * delta
 
 func _on_body_entered(body):
-	print("body entered ", body)
+	if (can_collide):
+		collision.emit()
+
+func _on_area_entered(area):
+	area.queue_free()
+	$ExplosionPlayer.play()
+	can_collide = false
+	$Sprite2D.hide()
+	await get_tree().create_timer(1).timeout
+	queue_free()

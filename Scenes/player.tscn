@@ -2,10 +2,27 @@
 
 [ext_resource type="Script" uid="uid://bowd7p1ktew8m" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://4qoxts5uyh01" path="res://Assets/PNG/playerShip2_orange.png" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://c625mrt32dvek" path="res://Assets/Bonus/sfx_laser2.ogg" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://bhii8ukn82b6w" path="res://Assets/Bonus/damage.wav" id="4_vgqql"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vgqql"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector3(0, 500, 0)
+scale_min = 10.0
+scale_max = 20.0
+color = Color(0.93957424, 0.5643191, 0.22371772, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1465008756]
 collision_mask = 6
 script = ExtResource("1_cvnsp")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=647543858]
+position = Vector2(0, 36)
+amount = 10
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_vgqql")
 
 [node name="PlayerImage" type="Sprite2D" parent="." unique_id=327438268]
 texture = ExtResource("1_v0iea")
@@ -19,5 +36,11 @@ position = Vector2(0, -61)
 [node name="canShootTimer" type="Timer" parent="." unique_id=2028458518]
 wait_time = 0.5
 one_shot = true
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="." unique_id=1662348617]
+stream = ExtResource("3_6t5aa")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=1752749127]
+stream = ExtResource("4_vgqql")
 
 [connection signal="timeout" from="canShootTimer" to="." method="_on_can_shoot_timeout"]

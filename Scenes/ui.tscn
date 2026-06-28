@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://jsmjrxyh1s4l"]
 
+[ext_resource type="Script" uid="uid://chnugqgay3wgl" path="res://Scenes/ui.gd" id="1_nf4gj"]
 [ext_resource type="FontFile" uid="uid://cn2uf0p4w0yci" path="res://Assets/Bonus/kenvector_future.ttf" id="1_qdvrb"]
-[ext_resource type="Texture2D" uid="uid://cbyw5bgesmyo6" path="res://Assets/PNG/UI/playerLife2_orange.png" id="2_nf4gj"]
 
-[node name="UI" type="CanvasLayer" unique_id=1326596620]
+[node name="UI" type="CanvasLayer" unique_id=1326596620 groups=["ui"]]
+script = ExtResource("1_nf4gj")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1010355505]
 anchors_preset = 5
@@ -21,7 +22,6 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1.540184e-06, 0.93405175, 0.8963097, 1)
 theme_override_fonts/font = ExtResource("1_qdvrb")
 theme_override_font_sizes/font_size = 50
-text = "2000"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1224337376]
@@ -38,17 +38,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 7
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer" unique_id=534902800]
-layout_mode = 2
-texture = ExtResource("2_nf4gj")
-stretch_mode = 2
+[node name="ScoreTimer" type="Timer" parent="." unique_id=1786087815]
+autostart = true
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer2/HBoxContainer" unique_id=922119165]
-layout_mode = 2
-texture = ExtResource("2_nf4gj")
-stretch_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer2/HBoxContainer" unique_id=1254291871]
-layout_mode = 2
-texture = ExtResource("2_nf4gj")
-stretch_mode = 2
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

@@ -16,9 +16,12 @@ func _process(_delta):
 	
 	if (Input.is_action_just_pressed("shoot") and canShoot) :
 		laser.emit($LaserStartPos.global_position)
+		$LaserSound.play()
 		canShoot = false
 		$canShootTimer.start()
-
-
+		
 func _on_can_shoot_timeout():
 	canShoot = true
+	
+func play_damage_sound():
+	$DamageSound.play()

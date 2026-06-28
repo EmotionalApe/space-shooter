@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crgirlg2nxnch" path="res://Assets/PNG/Effects/star2.png" id="6_bvt00"]
 [ext_resource type="Texture2D" uid="uid://mfhwunbxyeb0" path="res://Assets/PNG/Effects/star3.png" id="7_oqgf2"]
 [ext_resource type="PackedScene" uid="uid://jsmjrxyh1s4l" path="res://Scenes/ui.tscn" id="8_754fn"]
+[ext_resource type="AudioStream" uid="uid://cf23emnjhbnud" path="res://Assets/Bonus/GameSound.wav" id="9_bvt00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
 size = Vector2(1301, 33)
@@ -163,6 +164,11 @@ autoplay = "default"
 frame_progress = 0.2580387
 
 [node name="UI" parent="." unique_id=1326596620 instance=ExtResource("8_754fn")]
+
+[node name="LevelMusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=470290813]
+stream = ExtResource("9_bvt00")
+volume_db = -2.0
+autoplay = true
 
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]

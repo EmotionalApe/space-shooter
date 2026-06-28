@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dbj4xc8o5mkak"]
 
+[ext_resource type="Script" uid="uid://bt54vcs3d2p70" path="res://Scenes/game_over.gd" id="1_8fo1c"]
 [ext_resource type="FontFile" uid="uid://cn2uf0p4w0yci" path="res://Assets/Bonus/kenvector_future.ttf" id="1_ojehl"]
+[ext_resource type="AudioStream" uid="uid://hn0rveursgbh" path="res://Assets/Bonus/GameOver.wav" id="3_ek8ke"]
 
 [node name="GameOver" type="Control" unique_id=1626494244]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8fo1c")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1496495830]
 layout_mode = 1
@@ -17,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.22745098, 0.18039216, 0.24705882, 1)
+color = Color(0.06683792, 0.04829274, 0.11291089, 1)
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1947443229]
@@ -42,7 +45,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ojehl")
 theme_override_font_sizes/font_size = 25
-text = "Score 0"
+text = "Score : "
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=508970083]
@@ -62,3 +65,7 @@ theme_override_fonts/font = ExtResource("1_ojehl")
 theme_override_font_sizes/font_size = 30
 text = "Press SPACE to Start again"
 horizontal_alignment = 1
+
+[node name="GameOverplayer" type="AudioStreamPlayer2D" parent="." unique_id=879030384]
+stream = ExtResource("3_ek8ke")
+autoplay = true
