@@ -30,7 +30,7 @@ Play it directly in your browser: **[Play Space Shooter](https://emotionalape.gi
 
 ---
 
-## 🛠️ Tech Stack & Deployment
+## Tech Stack & Deployment
 
 - **Engine**: Godot Engine (v4.6)
 - **Programming Language**: GDScript
